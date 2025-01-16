@@ -1,11 +1,13 @@
-import { Card } from "@chakra-ui/react"
+import { Card } from "@chakra-ui/react";
+import { useParams } from 'react-router-dom';
 
-export default function CountryDetails() {
+export default function CountryDetails({countries}) {
+    let { individualCountry } = useParams();
+    console.log(individualCountry)
+
     return (
-    <Card.Root>
-        <Card.Header />
-        <Card.Body />
-        <Card.Footer />
-    </Card.Root>
+
+        <countryCard />
+
     )
 }

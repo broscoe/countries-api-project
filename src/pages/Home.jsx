@@ -1,34 +1,42 @@
-import { Card } from "@chakra-ui/react"
-export default function Home() {
+import { Card, For, Stack, Input, Button } from "@chakra-ui/react"
+import { FormControl, FormLabel } from "@chakra-ui/form-control"
+import { Field } from "../components/ui/field"
+import { NativeSelectField, NativeSelectRoot } from "../components/ui/native-select"
+import CountryCard from "../customComponents/CountryCard"
 
+export default function Home({countries}) {
     
-    async await fetch('https://restcountries.com/v3.1/all')
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => setError('Error: ' + error.message));
-  
+    const FormComponent = () => (
+        <FormControl>
+          <FormLabel htmlFor="search">Search</FormLabel>
+          <Field id="search" name="search" placeholder="Search countries" />
+          <FormLabel htmlFor="country">Country</FormLabel>
+          <NativeSelectRoot>
+            <NativeSelectField id="country" name="country">
+              <option value="usa">USA</option>
+              <option value="canada">Canada</option>
+              <option value="mexico">Mexico</option>
+            </NativeSelectField>
+          </NativeSelectRoot>
+          <FormLabel htmlFor="city">City</FormLabel>
+          <Input id="city" name="city" placeholder="Enter city" />
+          <Button mt={4} colorScheme="teal" type="submit">
+            Submit
+          </Button>
+        </FormControl>
+      );
+      
     return <>
-    <header>
-    <h1>where in the world?</h1>
-    <p>saved courntries</p>
-    <p>filter</p>
-  </header>
+        
+        {/* push name from obj saved to array to populate saved countries */}
+        <FormComponent />
 
- 
-    <form action="#">
-      <input type="text" placeholder='search' />
-      <select name="savedCountries" id="savedCountries">
-        <option value="Angola">Angola</option>
-        <option value="Bangladesh">Bangladesh</option>
-        <option value="Guyana">Guyana</option>
-        <option value="Vietnam">Vietnam</option>
-      </select>
-    </form>
-
-    <Card.Root>
-      <Card.Header />
-      <Card.Body />
-      <Card.Footer />
-    </Card.Root>
+        <Stack gap="4" direction="row" wrap="wrap">
+            <For each={countries} >
+                {(country, index) => (
+                    <CountryCard country={country}/>
+                )}
+            </For>
+        </Stack>
     </>
-  }
+}
