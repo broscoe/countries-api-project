@@ -1,14 +1,16 @@
 import { Card } from "@chakra-ui/react"
 import { Avatar } from "../components/ui/avatar"
+import { Link } from 'react-router-dom';    
 
 export default function CountryCard({country}) {
     
     return (
         <Card.Root key={country.name.official}>
+                                <Link to={`/Country/${country.name.official}`}>
                                 <Card.Body gap="2">
                                     <Avatar
                                         src={country.flags.png}
-                                        name={country.altSpellings[1]}
+                                        name={country.name.official}
                                         size="xxlg"
                                         shape="rounded"
                                     />
@@ -19,6 +21,7 @@ export default function CountryCard({country}) {
                                         <p>Capital: {country.capital}</p>
                                     </Card.Description>
                                 </Card.Body>
+                                </Link>
                             </Card.Root>
     )
 

@@ -19,7 +19,7 @@ function App( ) {
           })
           .catch(error => setError('Error: ' + error.message));
   }
-  console.log(countries);
+  
 
   useEffect(() => {
       apiCall();

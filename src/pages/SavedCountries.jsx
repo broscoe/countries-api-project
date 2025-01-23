@@ -1,8 +1,7 @@
-import { Card } from "@chakra-ui/react"
 import { useState } from 'react';
 
 
-export default function savedCountries({apiCall}) {
+export default function savedCountries() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -26,11 +25,6 @@ export default function savedCountries({apiCall}) {
     return (
         <>
 
-            < Card.Root >
-                <Card.Header />
-                <Card.Body />
-                <Card.Footer />
-            </Card.Root >
 
             <form onSubmit={handleSubmit}>
         <label htmlFor="name"></label>
