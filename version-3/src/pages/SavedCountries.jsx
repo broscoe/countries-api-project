@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function savedCountries() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     country: '',
+    bio: '',
   });
 
   const handleChange = (event) => {
@@ -17,17 +18,29 @@ export default function savedCountries() {
     e.preventDefault();
     let dataObj = formData;
     console.log(dataObj);
-    setFormData({ name: '', email: '', country: '' }); // Reset the form
+    console.log(JSON.stringify(formData))
     //send dataObj to backend
-      localStorage.setItem("profile", JSON.stringify(dataObj))
-    // const db = getDatabase();
-    // set(ref(db, 'users/' + userId), {
-    //   username: dataObj.name,
-    //   email: dataObj.email,
-    //   country: dataObj.imageUrl,
-    //   bio
-    // });
+    // try {
+    //   localStorage.setItem("profile", JSON.stringify(dataObj));
+    // }
+    //   catch (error) {
+    //     console.log(error);
+    //   }
+      
+    const db = getDatabase();
+    set(ref(db, 'users/' + userId), {
+      username: dataObj.name,
+      email: dataObj.email,
+      country: dataObj.country,
+      bio: dataObj.bio,
+    });
+    setFormData({ name: '', email: '', country: '', bio: '' }); // Reset the form
   };
+
+  useEffect(() => {
+   let profileInfo = JSON.parse(localStorage.getItem("profile"))
+   console.log(profileInfo.name)
+  }, [])
 
   return (
     <>
