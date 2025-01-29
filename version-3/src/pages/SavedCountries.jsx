@@ -19,7 +19,7 @@ export default function savedCountries() {
     console.log(dataObj);
     setFormData({ name: '', email: '', country: '' }); // Reset the form
     //send dataObj to backend
-      localStorage.setItem("profile", JSON.stringify(dataObj)
+      localStorage.setItem("profile", JSON.stringify(dataObj))
     // const db = getDatabase();
     // set(ref(db, 'users/' + userId), {
     //   username: dataObj.name,
