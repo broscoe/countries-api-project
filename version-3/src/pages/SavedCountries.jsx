@@ -45,41 +45,48 @@ export default function savedCountries() {
   return (
     <>
 
-
-      <form onSubmit = {handleSubmit}>
-        <label htmlFor = "name"> </label>
+    <div>
+      { user ? (
+        <div>
+          welcome {user}
+        </div>
+      ): (
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name"></label>
         <input
-          placeholder = "Name"
-          type = "text"
-          name = "name"
-          id = "name"
-          value = {formData.name}
-          onChange = {handleChange}
+          placeholder="Name"
+          type="text"
+          name="name"
+          id="name"
+          value={formData.name}
+          onChange={handleChange}
         />
-        <label htmlFor = "email"></label>
+        <label htmlFor="email"></label>
         <input
-          placeholder = "Email"
-          type = "email"
-          name = "email"
-          id = "email"
-          value = {formData.email}
-          onChange = {handleChange}
+          placeholder="Email"
+          type="email"
+          name="email"
+          id="email"
+          value={formData.email}
+          onChange={handleChange}
         />
-        <label htmlFor = "country"></label>
+        <label htmlFor="country"></label>
         <input
-          placeholder = "Country"
-          type= "country"
-          name =" country"
-          id = "country"
-          value = {formData.country}
-          onChange = {handleChange}
+          placeholder="Country"
+          type="country"
+          name="country"
+          id="country"
+          value={formData.country}
+          onChange={handleChange}
         />
         <label htmlFor="bio">
 
-          <textarea value = {formData.bio} onChange= {handleChange} placeholder="Bio" />
+          <textarea value={formData.bio} onChange={handleChange} placeholder="Bio" />
         </label>
         <button type="submit">Submit</button>
-      </form>
-    </>
+      </form>)}
+    </div>
+    
+  </>
   )
 }
