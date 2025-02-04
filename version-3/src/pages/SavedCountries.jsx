@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { getDatabase, ref, set } from "firebase/database";
+
 
 export default function savedCountries() {
   const [formData, setFormData] = useState({
@@ -87,6 +89,15 @@ export default function savedCountries() {
       </form>)}
     </div>
     
+    <div>
+      <Stack gap="4" direction="row" wrap="wrap">
+            <For each={userSavedCountries} >
+              {(userSavedCountries) => (
+                <CountryCard country={userSavedCountries} key={userSavedCountries.name.common} />
+              )}
+            </For>
+          </Stack>
+    </div>
   </>
   )
 }
